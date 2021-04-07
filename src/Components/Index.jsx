@@ -5,7 +5,7 @@ require("dotenv").config();
 
 class Index extends Component {
   state = {
-    nasaInfo: [],
+    nasaInfo: "",
   };
 
   componentDidMount() {
@@ -15,7 +15,8 @@ class Index extends Component {
     axios
       .get(nasaAPI)
       .then((res) => {
-        console.log(res);
+        this.setState({ nasaInfo: res.data.hdurl });
+        console.log(res.data.hdurl);
         return axios.get(nasaAPI);
       })
       .catch((error) => {
@@ -27,7 +28,13 @@ class Index extends Component {
     return (
       <>
         <div className={styles.wrapper}>
-          <header className={styles.header}></header>
+          <header className={styles.header}>
+            <img
+              title="NASA Pic Of The Day"
+              alt="NASA Pic Of The Day"
+              src={this.state.nasaInfo}
+            />
+          </header>
         </div>
       </>
     );
