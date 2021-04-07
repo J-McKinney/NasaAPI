@@ -30,6 +30,7 @@ class Index extends Component {
         <div className={styles.wrapper}>
           <header className={styles.header}>
             <img
+              className={styles.nasaImg}
               title="NASA Pic Of The Day"
               alt="NASA Pic Of The Day"
               src={this.state.nasaInfo}
